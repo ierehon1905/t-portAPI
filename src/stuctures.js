@@ -1,29 +1,29 @@
-class TransportDescroption {
-  /**
-   *
-   * @param {String} id
-   * @param {String} direction
-   * @param {Array} params
-   */
-  constructor(id, direction, params) {
-    //check for correct format of the arguments
-    this.id = id
-    this.direction = direction
-    this.params = params
-  }
-}
+// class TransportDescroption {
+//   /**
+//    *
+//    * @param {String} id
+//    * @param {String} direction
+//    * @param {Array} params
+//    */
+//   constructor(id, direction, params) {
+//     //check for correct format of the arguments
+//     this.id = id
+//     this.direction = direction
+//     this.params = params
+//   }
+// }
 
-class TrainDescription extends TransportDescroption {
-  /**
-   *
-   * @param {Number} availableSpots
-   */
-  constructor(id, availableSpots, direction, params) {
-    //check for correct format of the arguments
-    super(id, direction, params)
-    this.availableSpots = availableSpots
-  }
-}
+// class TrainDescription extends TransportDescroption {
+//   /**
+//    *
+//    * @param {Number} availableSpots
+//    */
+//   constructor(id, availableSpots, direction, params) {
+//     //check for correct format of the arguments
+//     super(id, direction, params)
+//     this.availableSpots = availableSpots
+//   }
+// }
 
 class Place {
   /**
@@ -61,20 +61,46 @@ class RouteSegment {
     DeparturePlace,
     ArrivalPlace
   ) {
-    this.transportType
+    this.transportType = transportType
+    this.description = description
+    this.departureTime = departureTime
+    this.arrivalTime = arrivalTime
+    this.DeparturePlace = DeparturePlace
+    this.ArrivalPlace = ArrivalPlace
   }
 }
 
-class Route {
-  /**
-   *
-   * @param {RouteSegment} masterRoute
-   * @param {RouteSegment} subRoutes
-   */
-  constructor(masterRoute, ...subRoutes) {
-    this.masterRoute = masterRoute
-    this.subRoutes = subRoutes
-  }
-}
+// class Route {
+//   /**
+//    *
+//    * @param {RouteSegment} masterRoute
+//    * @param {RouteSegment} subRoutes
+//    */
+//   constructor(masterRoute, ...subRoutes) {
+//     this.masterRoute = masterRoute
+//     this.subRoutes = subRoutes
+//   }
+// }
 
-module.exports = { Place }
+// class ListObj {
+//   constructor(val, prev, next) {
+//     this.val = val
+//     this.prev = prev
+//     this.next = next
+//   }
+// }
+
+// class ListPoint extends ListObj {
+//   constructor(val, prev, next) {
+//     super(val, prev, next)
+//   }
+// }
+
+// class Transit extends ListObj {
+//   constructor(from, to, filled = false) {
+//     this.val = val
+//     this.filled = filled
+//   }
+// }
+
+module.exports = { Place, RouteSegment }

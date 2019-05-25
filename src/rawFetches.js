@@ -12,6 +12,7 @@ const querify = obj => {
 module.exports = {
   /**
    * @param {String} query Addres to search
+   *  Beware of http/https changes
    */
   geocode: async query => {
     let options = querify({
@@ -19,7 +20,7 @@ module.exports = {
       geocode: query,
       format: "json"
     })
-    let result = await smartFetch(`https://geocode-maps.yandex.ru/1.x/?${options}`)
+    let result = await smartFetch(`http://geocode-maps.yandex.ru/1.x/?${options}`)
     result = await result.json()
     return result
   },
@@ -47,8 +48,8 @@ module.exports = {
   nearestStation: async (
     lat,
     lng,
-    stationTypes = null,
-    transportTypes = null
+    stationTypes = [],
+    transportTypes = []
   ) => {
     let options = querify({
       apikey: t.raspToken,
@@ -82,14 +83,13 @@ module.exports = {
   ) => {
     if (typeof date == "object") {
       date = date.toISOString().split("T")[0]
-    }
+    } 
     let options = querify({
       apikey: t.raspToken,
       format: "json",
       from: fromCode,
       to: toCode,
       date,
-      distance: 10,
       transport_types: transportTypes,
       limit: 1,
       transfers
